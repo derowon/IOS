@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0D8C1801CF79E900026862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C17F1CF79E900026862F /* main.m */; };
+		C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1821CF79E900026862F /* AppDelegate.m */; };
+		C0D8C1861CF79E900026862F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1851CF79E900026862F /* GameScene.m */; };
+		C0D8C1881CF79E900026862F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C1871CF79E900026862F /* GameScene.sks */; };
+		C0D8C18B1CF79E900026862F /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C18A1CF79E900026862F /* GameViewController.m */; };
+		C0D8C18E1CF79E900026862F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C18C1CF79E900026862F /* Main.storyboard */; };
+		C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C18F1CF79E900026862F /* Assets.xcassets */; };
+		C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C0D8C17B1CF79E900026862F /* Vidrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vidrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0D8C17F1CF79E900026862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C0D8C1811CF79E900026862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C0D8C1821CF79E900026862F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C0D8C1841CF79E900026862F /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		C0D8C1851CF79E900026862F /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		C0D8C1871CF79E900026862F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		C0D8C1891CF79E900026862F /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		C0D8C18A1CF79E900026862F /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		C0D8C18D1CF79E900026862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0D8C18F1CF79E900026862F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0D8C1921CF79E900026862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0D8C1941CF79E900026862F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0D8C1781CF79E900026862F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0D8C1721CF79E900026862F = {
+			isa = PBXGroup;
+			children = (
+				C0D8C17D1CF79E900026862F /* Vidrios */,
+				C0D8C17C1CF79E900026862F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0D8C17C1CF79E900026862F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0D8C17B1CF79E900026862F /* Vidrios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0D8C17D1CF79E900026862F /* Vidrios */ = {
+			isa = PBXGroup;
+			children = (
+				C0D8C1811CF79E900026862F /* AppDelegate.h */,
+				C0D8C1821CF79E900026862F /* AppDelegate.m */,
+				C0D8C1841CF79E900026862F /* GameScene.h */,
+				C0D8C1851CF79E900026862F /* GameScene.m */,
+				C0D8C1871CF79E900026862F /* GameScene.sks */,
+				C0D8C1891CF79E900026862F /* GameViewController.h */,
+				C0D8C18A1CF79E900026862F /* GameViewController.m */,
+				C0D8C18C1CF79E900026862F /* Main.storyboard */,
+				C0D8C18F1CF79E900026862F /* Assets.xcassets */,
+				C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */,
+				C0D8C1941CF79E900026862F /* Info.plist */,
+				C0D8C17E1CF79E900026862F /* Supporting Files */,
+			);
+			path = Vidrios;
+			sourceTree = "<group>";
+		};
+		C0D8C17E1CF79E900026862F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0D8C17F1CF79E900026862F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0D8C17A1CF79E900026862F /* Vidrios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0D8C1971CF79E900026862F /* Build configuration list for PBXNativeTarget "Vidrios" */;
+			buildPhases = (
+				C0D8C1771CF79E900026862F /* Sources */,
+				C0D8C1781CF79E900026862F /* Frameworks */,
+				C0D8C1791CF79E900026862F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vidrios;
+			productName = Vidrios;
+			productReference = C0D8C17B1CF79E900026862F /* Vidrios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0D8C1731CF79E900026862F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Dero;
+				TargetAttributes = {
+					C0D8C17A1CF79E900026862F = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = C0D8C1761CF79E900026862F /* Build configuration list for PBXProject "Vidrios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0D8C1721CF79E900026862F;
+			productRefGroup = C0D8C17C1CF79E900026862F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0D8C17A1CF79E900026862F /* Vidrios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0D8C1791CF79E900026862F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0D8C1881CF79E900026862F /* GameScene.sks in Resources */,
+				C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */,
+				C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */,
+				C0D8C18E1CF79E900026862F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0D8C1771CF79E900026862F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0D8C18B1CF79E900026862F /* GameViewController.m in Sources */,
+				C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */,
+				C0D8C1861CF79E900026862F /* GameScene.m in Sources */,
+				C0D8C1801CF79E900026862F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C0D8C18C1CF79E900026862F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0D8C18D1CF79E900026862F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0D8C1921CF79E900026862F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0D8C1951CF79E900026862F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C0D8C1961CF79E900026862F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0D8C1981CF79E900026862F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Vidrios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = won.Vidrios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C0D8C1991CF79E900026862F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Vidrios/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = won.Vidrios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0D8C1761CF79E900026862F /* Build configuration list for PBXProject "Vidrios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0D8C1951CF79E900026862F /* Debug */,
+				C0D8C1961CF79E900026862F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0D8C1971CF79E900026862F /* Build configuration list for PBXNativeTarget "Vidrios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0D8C1981CF79E900026862F /* Debug */,
+				C0D8C1991CF79E900026862F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0D8C1731CF79E900026862F /* Project object */;
+}
