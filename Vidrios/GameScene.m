@@ -26,6 +26,10 @@
     SKSpriteNode *_adelante;
     SKSpriteNode *_atras;
     SKTexture *vidrioRoto;
+    SKLabelNode *tiempo;
+    NSTimer *timer;
+    int timeSec ;
+    int timeMin ;
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -105,7 +109,7 @@
     _thief.physicsBody.collisionBitMask = worldCategory;
     _thief.physicsBody.density =1;
     [self addChild:_thief ];
-    [self runThief: _thiefRunningWithBack];
+    [self runThief: _thiefRunningWithBack thief:_thief];
 
 
     //Vidrio
@@ -119,6 +123,7 @@
     vidrios.physicsBody.categoryBitMask = objectsCategory;
     vidrios.physicsBody.collisionBitMask = worldCategory;
     vidrios.name= @"Vidrio";
+    vidrio = vidrios;
     [self addChild:vidrios];
     
     //VidrioRoto
@@ -136,7 +141,7 @@
     _thief.physicsBody.density =1;
     _adelante = _thief;
     [self addChild:_thief ];
-    [self runThief:_thiefRunningWithFoward];
+    [self runThief:_thiefRunningWithFoward thief:_thief];
     
     SKTexture *temp3 = _thiefRunningFrames[0];
     _thief = [SKSpriteNode spriteNodeWithTexture:temp3];
@@ -148,7 +153,7 @@
     _thief.physicsBody.categoryBitMask = ladronesCategory;
     _thief.physicsBody.collisionBitMask = worldCategory;
     [self addChild:_thief ];
-    [self runThief:_thiefRunningFrames];
+    [self runThief:_thiefRunningFrames thief:_thief];
    
         _atras = atras;
     
@@ -204,7 +209,29 @@
     //Cambiando de gravedad
     self.physicsWorld.gravity = CGVectorMake(0.0, -5.0);
     
+    //tiempo
+    /*
+     CGRect frame = myLabel.frame;
+     frame.origin.y=10;//pass the cordinate which you want
+     frame.origin.x= 12;//pass the cordinate which you want
+     myLabel.frame= frame;
+     self.myLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+     self.myLabel.text = @"Drag this label";
+     self.myLabel.fontSize = 20;
+     self.myLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+     */
     
+    
+    tiempo = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    tiempo.text =@"00:00";
+    tiempo.fontSize = 20;
+    tiempo.position = CGPointMake(CGRectGetMaxX(self.frame)-50 , CGRectGetMaxY(self.frame)-150);
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+    tiempo.zPosition = 1;
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    [self addChild:tiempo];
+    timeSec =0;
+    timeMin=0;
     
     
     //Color del fondo
@@ -248,8 +275,8 @@
     
     
 }
--(void)runThief:(NSArray*)arr {
-    [_thief runAction:[SKAction repeatActionForever:
+-(void)runThief:(NSArray*)arr thief:(SKSpriteNode*)thief {
+    [thief runAction:[SKAction repeatActionForever:
                       [SKAction animateWithTextures:arr
                                        timePerFrame:0.1f
                                              resize:NO
@@ -263,7 +290,34 @@
     return (int)from + arc4random() % (to-from+1);
 }
 
+- (void)timerTick:(NSTimer *)timer
+{
+    timeSec++;
+    if (timeSec == 60)
+    {
+        timeSec = 0;
+        timeMin++;
+    }
+    NSLog(@"A");
+    //Format the string 00:00
+    NSString* timeNow = [NSString stringWithFormat:@"%02d:%02d", timeMin, timeSec];
+    //Display on your label
+    //[timeLabel setStringValue:timeNow];
+    [tiempo setText:timeNow];
+}
 
+- (void) StopTimer
+{
+    [timer invalidate];
+    timeSec = 0;
+    timeMin = 0;
+    //Since we reset here, and timerTick won't update your label again, we need to refresh it again.
+    //Format the string in 00:00
+    NSString* timeNow = [NSString stringWithFormat:@"%02d:%02d", timeMin, timeSec];
+    //Display on your label
+    // [timeLabel setStringValue:timeNow];
+    tiempo.text= timeNow;
+}
 
 // Add these new methods
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -278,8 +332,13 @@
     SKNode *node = [self nodeAtPoint:location];
     if([node.name isEqualToString:@"Vidrio"]){
         NSLog(@"Toque el vidrio");
+        //SKAction* changeFace = [SKAction setTexture:[SKTexture textureWithImageNamed:@"vidrioRoto"]];
+        //[vidrio runAction:changeFace];
+        vidrio.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
+        [self runThief:_thiefRunningFrames thief:_atras];
+        [self runThief:_thiefRunningFrames thief:_adelante ];
         [self.physicsWorld removeAllJoints];
-        [vidrio runAction:[SKAction setTexture:[SKTexture textureWithImageNamed:@"vidrioRoto"] resize:NO]];
+        
     }
 }
 
@@ -301,6 +360,7 @@
    //[_thief.physicsBody applyImpulse:CGVectorMake(5, 0)];
     [_atras.physicsBody applyImpulse:CGVectorMake(7, 0)];
     [_adelante.physicsBody applyImpulse:CGVectorMake(7, 0)];
+    
     CGPoint bgVelocity = CGPointMake(-_bgVel, 0.0);
     
 
@@ -313,6 +373,8 @@
         CGPoint amtToMove = CGPointMake(bgVelocity.x * _deltaTime, bgVelocity.y * _deltaTime);
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
+    
+    
 }
 
 @end
