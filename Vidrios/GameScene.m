@@ -23,7 +23,9 @@
     FMMParallaxNode *_parallaxNodeBackground;
     SKSpriteNode *_thief;
     SKSpriteNode *vidrio;
-    SKSpriteNode *_prueba;
+    SKSpriteNode *_adelante;
+    SKSpriteNode *_atras;
+    SKTexture *vidrioRoto;
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -109,24 +111,30 @@
     //Vidrio
     SKTexture *v = [SKTexture textureWithImageNamed:@"vidrio"];
     SKSpriteNode *vidrios = [SKSpriteNode spriteNodeWithTexture:v];
-    vidrios.position = CGPointMake(atras.position.x+atras.size.width-30,250);
+    vidrios.position = CGPointMake(atras.position.x+atras.size.width-30,260);
     vidrios.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(vidrios.size.width, vidrios.size.height)];
     vidrios.physicsBody.dynamic = YES;
+    //vidrios.physicsBody.allowsRotation = NO;
     vidrios.alpha = 0.85;
     vidrios.physicsBody.categoryBitMask = objectsCategory;
     vidrios.physicsBody.collisionBitMask = worldCategory;
+    vidrios.name= @"Vidrio";
     [self addChild:vidrios];
+    
+    //VidrioRoto
+    vidrioRoto = [SKTexture textureWithImageNamed:@"vidrioRoto"];
     
     SKTexture *temp2 = _thiefRunningWithFoward[0];
     _thief = [SKSpriteNode spriteNodeWithTexture:temp2];
     adelante = _thief;
-    _thief.position = CGPointMake(vidrios.position.x+vidrios.size.width-38 , 250);
+    _thief.position = CGPointMake(vidrios.position.x+vidrios.size.width-30 , 250);
     _thief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(_thief.size.width, _thief.size.height-10)];
     _thief.physicsBody.dynamic = YES;
     _thief.physicsBody.allowsRotation = NO;
     _thief.physicsBody.categoryBitMask = ladronesCategory;
     _thief.physicsBody.collisionBitMask = worldCategory;
     _thief.physicsBody.density =1;
+    _adelante = _thief;
     [self addChild:_thief ];
     [self runThief:_thiefRunningWithFoward];
     
@@ -142,7 +150,7 @@
     [self addChild:_thief ];
     [self runThief:_thiefRunningFrames];
    
-        _prueba = atras;
+        _atras = atras;
     
     
     
@@ -264,7 +272,15 @@
     }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{    
+{
+    UITouch * touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *node = [self nodeAtPoint:location];
+    if([node.name isEqualToString:@"Vidrio"]){
+        NSLog(@"Toque el vidrio");
+        [self.physicsWorld removeAllJoints];
+        [vidrio runAction:[SKAction setTexture:[SKTexture textureWithImageNamed:@"vidrioRoto"] resize:NO]];
+    }
 }
 
 -(void)bearMoveEnded
@@ -283,7 +299,8 @@
     
     //_thief.physicsBody.velocity = CGVectorMake(0, 0.5);
    //[_thief.physicsBody applyImpulse:CGVectorMake(5, 0)];
-    [_prueba.physicsBody applyImpulse:CGVectorMake(20, 0)];
+    [_atras.physicsBody applyImpulse:CGVectorMake(7, 0)];
+    [_adelante.physicsBody applyImpulse:CGVectorMake(7, 0)];
     CGPoint bgVelocity = CGPointMake(-_bgVel, 0.0);
     
 
