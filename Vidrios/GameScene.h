@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ThiefMachine.h"
 
 @interface GameScene : SKScene
+
+@property (strong, nonatomic) ThiefMachine* thiefMachine;
 
 @end
