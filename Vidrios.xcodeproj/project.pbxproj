@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C049137F1D120694004D225A /* FMMParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C049137E1D120694004D225A /* FMMParallaxNode.m */; };
 		C0D8C1801CF79E900026862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C17F1CF79E900026862F /* main.m */; };
 		C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1821CF79E900026862F /* AppDelegate.m */; };
 		C0D8C1861CF79E900026862F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1851CF79E900026862F /* GameScene.m */; };
@@ -15,9 +16,12 @@
 		C0D8C18E1CF79E900026862F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C18C1CF79E900026862F /* Main.storyboard */; };
 		C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C18F1CF79E900026862F /* Assets.xcassets */; };
 		C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */; };
+		C0D8C19B1CF7A1140026862F /* Sprite.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C19A1CF7A1140026862F /* Sprite.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C049137D1D120694004D225A /* FMMParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMMParallaxNode.h; sourceTree = "<group>"; };
+		C049137E1D120694004D225A /* FMMParallaxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMMParallaxNode.m; sourceTree = "<group>"; };
 		C0D8C17B1CF79E900026862F /* Vidrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vidrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D8C17F1CF79E900026862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0D8C1811CF79E900026862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 		C0D8C18F1CF79E900026862F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0D8C1921CF79E900026862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0D8C1941CF79E900026862F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0D8C19A1CF7A1140026862F /* Sprite.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprite.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,9 @@
 		C0D8C17D1CF79E900026862F /* Vidrios */ = {
 			isa = PBXGroup;
 			children = (
+				C049137D1D120694004D225A /* FMMParallaxNode.h */,
+				C049137E1D120694004D225A /* FMMParallaxNode.m */,
+				C0D8C19A1CF7A1140026862F /* Sprite.atlas */,
 				C0D8C1811CF79E900026862F /* AppDelegate.h */,
 				C0D8C1821CF79E900026862F /* AppDelegate.m */,
 				C0D8C1841CF79E900026862F /* GameScene.h */,
@@ -146,6 +154,7 @@
 			files = (
 				C0D8C1881CF79E900026862F /* GameScene.sks in Resources */,
 				C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */,
+				C0D8C19B1CF7A1140026862F /* Sprite.atlas in Resources */,
 				C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */,
 				C0D8C18E1CF79E900026862F /* Main.storyboard in Resources */,
 			);
@@ -161,6 +170,7 @@
 				C0D8C18B1CF79E900026862F /* GameViewController.m in Sources */,
 				C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */,
 				C0D8C1861CF79E900026862F /* GameScene.m in Sources */,
+				C049137F1D120694004D225A /* FMMParallaxNode.m in Sources */,
 				C0D8C1801CF79E900026862F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +320,7 @@
 				C0D8C1991CF79E900026862F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
