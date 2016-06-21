@@ -7,7 +7,6 @@
 //
 
 #import "GameScene.h"
-#import "FMMParallaxNode.h"
 
 @implementation GameScene
 {
@@ -20,7 +19,6 @@
     SKColor* _skyColor;
     float _bgVel ;
     NSMutableArray *_clouds;
-    FMMParallaxNode *_parallaxNodeBackground;
     SKSpriteNode *_thief;
     SKSpriteNode *vidrio;
     SKSpriteNode *_adelante;
@@ -94,6 +92,10 @@
         [runningWithBack addObject:temp];
     }
     _thiefRunningWithBack = runningWithBack;
+    
+    self.thiefMachine = [[ThiefMachine alloc] init];
+    [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 250)];
+    
     
     SKSpriteNode *atras;
     SKSpriteNode *adelante;
