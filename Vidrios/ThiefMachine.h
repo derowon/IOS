@@ -10,8 +10,8 @@
 #import <SpriteKit/SpriteKit.h>
 
 static const uint32_t thiefCategory = 1;
-static const uint32_t objectCategory = 2;
-static const uint32_t worldCategory = 4;
+static const uint32_t objectCategory = 4;
+static const uint32_t worldCategory = 2;
 
 @interface ThiefMachine : NSObject
 
