@@ -16,7 +16,7 @@
         //self.position = CGPointMake(backThief.position.x+backThief.size.width-30, 250);
         //self.position = CGPointMake(300,300);
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
-        self.physicsBody.dynamic =YES;
+        self.physicsBody.dynamic = YES;
         self.alpha=0.85;
         self.physicsBody.categoryBitMask = objectCategory;
         self.physicsBody.collisionBitMask = worldCategory;
@@ -33,6 +33,11 @@
 -(void) addFirstJoints:(SKPhysicsJoint*)firstJoint andSecond:(SKPhysicsJoint*)secondJoint{
     [self.pines addObject:firstJoint];
     [self.pines addObject:secondJoint];
+}
+
+-(void)update:(CFTimeInterval)currentTime {
+    self.front.physicsBody.velocity = CGVectorMake(self.velocity * self.direction, 0);
+    self.back.physicsBody.velocity = CGVectorMake(self.velocity * self.direction, 0);
 }
 
 @end

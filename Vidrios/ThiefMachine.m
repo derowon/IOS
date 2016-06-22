@@ -59,12 +59,12 @@
     return self;
 }
 
--(void)spawnRandomThiefInScene:(SKScene*)scene {
+-(void)spawnRandomThiefInScene:(SKScene*)scene WithSpeed:(CGFloat)speed {
     uint32_t location = arc4random_uniform(6);
-    [self spawnThiefInScene:scene AtLocation:spawnLocations[location]];
+    [self spawnThiefInScene:scene AtLocation:spawnLocations[location] WithSpeed:speed];
 }
 
--(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location {
+-(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed {
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
     SKSpriteNode* backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
     Vidrio *v = [[Vidrio alloc] init];
@@ -72,6 +72,8 @@
     backThief.position = CGPointMake(location.x , location.y);
     
     v.position = CGPointMake(backThief.position.x + backThief.size.width - 30, backThief.position.y);
+    v.direction = 1;
+    v.velocity = speed;
     
     frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -25, location.y);
 
@@ -96,7 +98,7 @@
     
     CGPoint anchor = CGPointMake(backThief.position.x + backThief.size.width/2, backThief.position.y);
     SKPhysicsJointFixed *pin = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:backThief.physicsBody anchor:anchor];
-    //[scene.physicsWorld addJoint:pin];
+    [scene.physicsWorld addJoint:pin];
     
     anchor = CGPointMake(v.position.x + v.size.width/2, v.position.y);
     SKPhysicsJointFixed *pin2 = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:frontThief.physicsBody anchor:anchor];
