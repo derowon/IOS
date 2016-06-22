@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */ = {isa = PBXBuildFile; fileRef = C0ADBC851D1B06A800B80E72 /* Vidrio.m */; };
 		C0D8C1801CF79E900026862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C17F1CF79E900026862F /* main.m */; };
 		C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1821CF79E900026862F /* AppDelegate.m */; };
 		C0D8C1861CF79E900026862F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1851CF79E900026862F /* GameScene.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0ADBC841D1B06A800B80E72 /* Vidrio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vidrio.h; sourceTree = "<group>"; };
+		C0ADBC851D1B06A800B80E72 /* Vidrio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vidrio.m; sourceTree = "<group>"; };
 		C0D8C17B1CF79E900026862F /* Vidrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vidrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D8C17F1CF79E900026862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0D8C1811CF79E900026862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				FF19D3F81D19C1A6002F5D05 /* ThiefSpriteNode.m */,
 				FF19D3FA1D19D0BB002F5D05 /* ThiefMachine.h */,
 				FF19D3FB1D19D0BB002F5D05 /* ThiefMachine.m */,
+				C0ADBC841D1B06A800B80E72 /* Vidrio.h */,
+				C0ADBC851D1B06A800B80E72 /* Vidrio.m */,
 			);
 			path = Vidrios;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */,
 				FF19D3FC1D19D0BB002F5D05 /* ThiefMachine.m in Sources */,
 				C0D8C1861CF79E900026862F /* GameScene.m in Sources */,
+				C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */,
 				FF19D3F91D19C1A6002F5D05 /* ThiefSpriteNode.m in Sources */,
 				C0D8C1801CF79E900026862F /* main.m in Sources */,
 			);

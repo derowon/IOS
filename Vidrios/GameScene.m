@@ -10,25 +10,10 @@
 
 @implementation GameScene
 {
-    SKSpriteNode *_cloud;
-    NSArray *_thiefRunningFrames;
-    NSArray *_thiefRunningWithFoward;
-    NSArray *_thiefRunningWithBack;
-    NSTimeInterval _lastUpdateTime;
-    NSTimeInterval _deltaTime;
-    SKColor* _skyColor;
-    float _bgVel ;
-    NSMutableArray *_clouds;
-    SKSpriteNode *_thief;
-    SKSpriteNode *vidrio;
-    SKSpriteNode *_prueba;
-    SKSpriteNode* wachin;
 }
 
 -(void)didMoveToView:(SKView *)view {
-    static const int ladronesCategory =1;
-    static const int worldCategory = 2;
-    static const int objectsCategory = 4;
+
     
     /* Setup your scene here */
    // SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -57,7 +42,7 @@
     [self walkingBear];
     */
     
-    
+    /*
     //PERSONAJE Corriendo
     NSMutableArray *runningFrames = [NSMutableArray array];
     SKTextureAtlas *runningAnimatedAtlas = [SKTextureAtlas atlasNamed:@"Sprite"];
@@ -87,10 +72,15 @@
         [runningWithBack addObject:temp];
     }
     _thiefRunningWithBack = runningWithBack;
+    */
     
     self.thiefMachine = [[ThiefMachine alloc] init];
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 250)];
+    [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 400)];
+    [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 600)];
+
     
+    /*
     
     SKSpriteNode *atras;
     SKSpriteNode *adelante;
@@ -155,8 +145,8 @@
     anchor = CGPointMake(vidrios.position.x + vidrios.size.width/2, vidrios.position.y);
     pin = [SKPhysicsJointFixed jointWithBodyA:vidrios.physicsBody bodyB:adelante.physicsBody anchor:anchor];
     [self.physicsWorld addJoint:pin];
-    
-    
+    */
+    /*
     SKTexture *ground = [SKTexture textureWithImageNamed:@"brick"];
     for(int i=0;i<self.frame.size.width+50;){
         SKSpriteNode *piso = [SKSpriteNode spriteNodeWithTexture:ground];
@@ -186,23 +176,28 @@
         i+=piso.size.width;
         piso.zPosition =-90;
         [self addChild:piso];
-    }
+    }*/
     
+    [self.thiefMachine createGround:self];
+    [self.thiefMachine setBackGround:self];
     //Agrego fisica al piso
+    /*
     SKNode *dummy = [SKNode node];
     dummy.position = CGPointMake(self.frame.size.width/2, 110);
     dummy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width, 30)];
     dummy.physicsBody.dynamic = NO;
     dummy.physicsBody.categoryBitMask = worldCategory;
     [self addChild:dummy];
+    */
     
     //Cambiando de gravedad
-    self.physicsWorld.gravity = CGVectorMake(0.0, -5.0);
+    //self.physicsWorld.gravity = CGVectorMake(0.0, -5.0);
     
     
     
     
     //Color del fondo
+    /*
     _skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:_skyColor];
     
@@ -229,7 +224,7 @@
         [_clouds addObject:_cloud ];
         [self addChild:_cloud];
     }
-    
+    */
     
    // NSArray *parallaxBackground = @[@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png",@"cloud@2x.png"];
    // CGSize cloudSize = CGSizeMake(100, 50);
@@ -243,6 +238,7 @@
     
     
 }
+/*
 -(void)runThief:(NSArray*)arr {
     [_thief runAction:[SKAction repeatActionForever:
                       [SKAction animateWithTextures:arr
@@ -258,7 +254,7 @@
     return (int)from + arc4random() % (to-from+1);
 }
 
-
+*/
 
 // Add these new methods
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -270,13 +266,10 @@
 {    
 }
 
--(void)bearMoveEnded
-{
-
-}
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    /*
     if (_lastUpdateTime) {
         _deltaTime = currentTime - _lastUpdateTime;
     } else {
@@ -299,6 +292,9 @@
         CGPoint amtToMove = CGPointMake(bgVelocity.x * _deltaTime, bgVelocity.y * _deltaTime);
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
+     */
+    
+    [self.thiefMachine update:currentTime withScene:self];
 }
 
 @end
