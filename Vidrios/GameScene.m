@@ -10,10 +10,24 @@
 
 @implementation GameScene
 {
+    SKLabelNode* tiempo;
+    NSTimer* timer;
+    NSUInteger timeSec;
+    CGFloat spawnInterval;
 }
 
 -(void)didMoveToView:(SKView *)view {
 
+    spawnInterval = 5;
+    tiempo = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    tiempo.text = @"00:00";
+    tiempo.fontSize = 20;
+    tiempo.position = CGPointMake(CGRectGetMaxX(self.frame) - 50, CGRectGetMaxY(self.frame) - 150);
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+    tiempo.zPosition = 1;
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    [self addChild:tiempo];
+    timeSec = 0;
     
     /* Setup your scene here */
    // SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
@@ -240,23 +254,25 @@
     
     
 }
-/*
--(void)runThief:(NSArray*)arr {
-    [_thief runAction:[SKAction repeatActionForever:
-                      [SKAction animateWithTextures:arr
-                                       timePerFrame:0.1f
-                                             resize:NO
-                                            restore:YES]] withKey:@"runningInPlace"];
-    return;
+
+- (void)timerTick:(NSTimer*) timer {
+    timeSec++;
+    [tiempo setText:[NSString stringWithFormat:@"%02lu:%02lu", timeSec / 60, timeSec % 60]];
+    
+    [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60)];
 }
 
+- (void)StopTimer {
+    [timer invalidate];
+    timeSec = 0;
+    tiempo.text = [NSString stringWithFormat:@"%02lu:%02lu", timeSec, timeSec];
+}
 
 -(int)getRandomNumberBetween:(int)from to:(int)to {
     
     return (int)from + arc4random() % (to-from+1);
 }
 
-*/
 
 // Add these new methods
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -303,7 +319,11 @@
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
      */
-    
+    for(Vidrio* v in self.children) {
+        if ([v isKindOfClass:[Vidrio class]]) {
+            [v update:currentTime];
+        }
+    }
     [self.thiefMachine update:currentTime withScene:self];
 }
 

@@ -59,12 +59,12 @@
     return self;
 }
 
--(void)spawnRandomThiefInScene:(SKScene*)scene {
+-(void)spawnRandomThiefInScene:(SKScene*)scene WithSpeed:(CGFloat)speed {
     uint32_t location = arc4random_uniform(6);
-    [self spawnThiefInScene:scene AtLocation:spawnLocations[location]];
+    [self spawnThiefInScene:scene AtLocation:spawnLocations[location] WithSpeed:speed];
 }
 
--(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location {
+-(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed {
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
     SKSpriteNode* backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
     Vidrio *v = [[Vidrio alloc] init];

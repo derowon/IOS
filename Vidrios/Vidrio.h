@@ -13,7 +13,8 @@
 @property (strong,nonatomic) NSMutableArray *pines;
 @property (strong,nonatomic) SKSpriteNode *front;
 @property (strong,nonatomic) SKSpriteNode *back;
-@property int direction;
+@property NSUInteger direction;
+@property CGFloat velocity;
 
 
 -(instancetype)init;
