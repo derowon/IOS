@@ -48,7 +48,7 @@
         spawnLocations[0] = CGPointMake(300, 250);
         spawnLocations[1] = CGPointMake(100, 250);
         spawnLocations[2] = CGPointMake(150, 500);
-        spawnLocations[3] = CGPointMake(200, 500);
+        spawnLocations[3] = CGPointMake(200, 600);
         spawnLocations[4] = CGPointMake(250, 500);
         spawnLocations[5] = CGPointMake(400, 750);
      
@@ -59,47 +59,22 @@
     return self;
 }
 
+-(void)spawnRandomThiefInScene:(SKScene*)scene {
+    uint32_t location = arc4random_uniform(6);
+    [self spawnThiefInScene:scene AtLocation:spawnLocations[location]];
+}
+
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location {
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
     SKSpriteNode* backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
-    
-
     Vidrio *v = [[Vidrio alloc] init];
-    
-    
-    /*
-    //Vidrio
-    SKTexture *v = [SKTexture textureWithImageNamed:@"vidrio"];
-    SKSpriteNode *vidrios = [SKSpriteNode spriteNodeWithTexture:v];
-    vidrios.position = CGPointMake(atras.position.x+atras.size.width-30,250);
-    vidrios.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(vidrios.size.width, vidrios.size.height)];
-    vidrios.physicsBody.dynamic = YES;
-    vidrios.alpha = 0.85;
-    vidrios.physicsBody.categoryBitMask = objectsCategory;
-    vidrios.physicsBody.collisionBitMask = worldCategory;
-    [self addChild:vidrios];
-*/
-    NSLog(@"CGPOint : %f, %f",location.x,location.y);
     
     backThief.position = CGPointMake(location.x , location.y);
     
-    NSLog(@"THIEF of : %f, %f",backThief.position.x,backThief.position.y);
-    
-     v.position = CGPointMake(backThief.position.x+backThief.size.width-30, backThief.position.y);
-    
+    v.position = CGPointMake(backThief.position.x + backThief.size.width - 30, backThief.position.y);
     
     frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -25, location.y);
 
-    CGPoint anchor = CGPointMake(backThief.position.x + backThief.size.width/2, backThief.position.y);
-    SKPhysicsJointFixed *pin = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:backThief.physicsBody anchor:anchor];
-    //[scene.physicsWorld addJoint:pin];
-    
-    anchor = CGPointMake(v.position.x + v.size.width/2, v.position.y);
-    SKPhysicsJointFixed *pin2 = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:frontThief.physicsBody anchor:anchor];
-    [scene.physicsWorld addJoint:pin2];
-     //[v addFirstJoints:pin2 andSecond:pin];
-    
-    
     frontThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(frontThief.size.width, frontThief.size.height)];
     backThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(backThief.size.width, backThief.size.height)];
     frontThief.physicsBody.dynamic = YES;
@@ -110,7 +85,6 @@
     backThief.physicsBody.categoryBitMask = thiefCategory;
     frontThief.physicsBody.collisionBitMask = worldCategory;
     backThief.physicsBody.collisionBitMask = worldCategory;
-    
    
     [scene addChild:frontThief];
     [scene addChild:backThief];
@@ -119,7 +93,17 @@
     [frontThief runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:self.thiefWithFrontTextures timePerFrame:0.1f resize:NO restore:YES]] withKey:@"runningInPlace"];
     [backThief runAction:[SKAction repeatActionForever:[SKAction animateWithTextures:self.thiefWithBackTextures timePerFrame:0.1f resize:NO restore:YES]] withKey:@"runningInPlace"];
     [v addFront:frontThief andBack:backThief];
+    
+    CGPoint anchor = CGPointMake(backThief.position.x + backThief.size.width/2, backThief.position.y);
+    SKPhysicsJointFixed *pin = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:backThief.physicsBody anchor:anchor];
+    //[scene.physicsWorld addJoint:pin];
+    
+    anchor = CGPointMake(v.position.x + v.size.width/2, v.position.y);
+    SKPhysicsJointFixed *pin2 = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:frontThief.physicsBody anchor:anchor];
+    [scene.physicsWorld addJoint:pin2];
+    [v addFirstJoints:pin2 andSecond:pin];
 }
+
 -(void) setBackGround:(SKScene *)scene{
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [scene setBackgroundColor:skyColor];
@@ -206,6 +190,7 @@
     [scene addChild:dummy];
 
 }
+
 -(void)update:(CFTimeInterval)currentTime withScene:(SKScene*) scene{
     
     if (self.lastUpdateTime) {

@@ -75,10 +75,19 @@
     */
     
     self.thiefMachine = [[ThiefMachine alloc] init];
-    [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 250)];
+    /*[self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 250)];
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 400)];
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 600)];
-
+     */
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self];
     
     /*
     

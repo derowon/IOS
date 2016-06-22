@@ -25,6 +25,7 @@ static const uint32_t worldCategory = 2;
 @property float bgVel;
 
 -(instancetype)init;
+-(void)spawnRandomThiefInScene:(SKScene*)scene;
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location;
 -(void)createGround:(SKScene*)scene;
 -(void)setBackGround:(SKScene*)scene;
