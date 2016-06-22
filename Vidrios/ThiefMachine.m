@@ -71,9 +71,9 @@
     
     backThief.position = CGPointMake(location.x , location.y);
     
-    v.position = CGPointMake(backThief.position.x + backThief.size.width - 30, backThief.position.y);
+    v.position = CGPointMake(backThief.position.x + backThief.size.width - 30, backThief.position.y+10);
     
-    frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -25, location.y);
+    frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -15, location.y);
 
     frontThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(frontThief.size.width, frontThief.size.height)];
     backThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(backThief.size.width, backThief.size.height)];
@@ -96,7 +96,7 @@
     
     CGPoint anchor = CGPointMake(backThief.position.x + backThief.size.width/2, backThief.position.y);
     SKPhysicsJointFixed *pin = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:backThief.physicsBody anchor:anchor];
-    //[scene.physicsWorld addJoint:pin];
+    [scene.physicsWorld addJoint:pin];
     
     anchor = CGPointMake(v.position.x + v.size.width/2, v.position.y);
     SKPhysicsJointFixed *pin2 = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:frontThief.physicsBody anchor:anchor];
@@ -215,6 +215,30 @@
         CGPoint amtToMove = CGPointMake(bgVelocity.x * _deltaTime, bgVelocity.y * _deltaTime);
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
+
+}
+-(void) vidrioTouched:(SKNode *)node scene:(SKScene*)scene{
+    Vidrio *v = (Vidrio*)node;
+    for (SKPhysicsJoint * joint in v.pines) {
+        [scene.physicsWorld removeJoint:joint];
+    }
+    [scene.physicsWorld removeAllJoints];
+    v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
+    //[v.back removeAllActions];
+    //v.back = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
+    [v.back runAction:[SKAction repeatActionForever:
+                       [SKAction animateWithTextures:self.thiefRunningTextures
+                                        timePerFrame:0.1f
+                                              resize:NO
+                                             restore:YES]] withKey:@"runningInPlace"];
+    //[v.front removeAllActions];
+    //v.front = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
+
+    [v.front runAction:[SKAction repeatActionForever:
+                       [SKAction animateWithTextures:self.thiefRunningTextures
+                                        timePerFrame:0.1f
+                                              resize:NO
+                                             restore:YES]] withKey:@"runningInPlace"];
 
 }
 

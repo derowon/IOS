@@ -30,5 +30,5 @@ static const uint32_t worldCategory = 2;
 -(void)createGround:(SKScene*)scene;
 -(void)setBackGround:(SKScene*)scene;
 -(void)update:(CFTimeInterval)currentTime withScene:(SKScene*)scene;
-
+-(void)vidrioTouched:(SKNode*)node scene:(SKScene*) scene;
 @end

@@ -80,14 +80,7 @@
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 600)];
      */
     [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
-    [self.thiefMachine spawnRandomThiefInScene:self];
+
     
     /*
     
@@ -200,7 +193,7 @@
     */
     
     //Cambiando de gravedad
-    //self.physicsWorld.gravity = CGVectorMake(0.0, -5.0);
+    self.physicsWorld.gravity = CGVectorMake(0.0, -5.0);
     
     
     
@@ -272,7 +265,15 @@
     }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{    
+{
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *node = [self nodeAtPoint:location];
+    if([node.name isEqualToString:@"Vidrio"]){
+        NSLog(@"Aprete!!! el vidrio");
+        [self.thiefMachine vidrioTouched:node scene:self];
+        
+    }
 }
 
 

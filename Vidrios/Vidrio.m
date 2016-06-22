@@ -20,6 +20,7 @@
         self.alpha=0.85;
         self.physicsBody.categoryBitMask = objectCategory;
         self.physicsBody.collisionBitMask = worldCategory;
+        self.name=@"Vidrio";
     }
  
     return self;
@@ -35,4 +36,7 @@
     [self.pines addObject:secondJoint];
 }
 
+-(void) deltePins{
+    
+}
 @end

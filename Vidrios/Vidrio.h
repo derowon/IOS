@@ -15,8 +15,10 @@
 @property (strong,nonatomic) SKSpriteNode *back;
 @property int direction;
 
+
 -(instancetype)init;
 -(void) addFront:(SKSpriteNode*) front andBack:(SKSpriteNode*)back;
 -(void) addFirstJoints:(SKPhysicsJoint*)firstJoint andSecond:(SKPhysicsJoint*)secondJoint;
+-(void) deltePins;
 
 @end
