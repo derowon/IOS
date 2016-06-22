@@ -45,12 +45,12 @@
         self.thiefWithBackTextures = runningFrames;
         
         //Thieves spawn locations
-        spawnLocations[0] = CGPointMake(300, 250);
-        spawnLocations[1] = CGPointMake(100, 250);
-        spawnLocations[2] = CGPointMake(150, 500);
-        spawnLocations[3] = CGPointMake(200, 600);
-        spawnLocations[4] = CGPointMake(250, 500);
-        spawnLocations[5] = CGPointMake(400, 750);
+        spawnLocations[0] = CGPointMake(-150, 150);
+        spawnLocations[1] = CGPointMake(-150, 350);
+        spawnLocations[2] = CGPointMake(-150, 550);
+        spawnLocations[3] = CGPointMake(400, 550);
+        spawnLocations[4] = CGPointMake(400, 350);
+        spawnLocations[5] = CGPointMake(400, 150);
      
         //Ground creation
         
@@ -65,13 +65,18 @@
 }
 
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed {
+   
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
     SKSpriteNode* backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
     Vidrio *v = [[Vidrio alloc] init];
-    
+   // frontThief.xScale = fabs(frontThief.xScale) * -1;
     backThief.position = CGPointMake(location.x , location.y);
     
-    v.position = CGPointMake(backThief.position.x + backThief.size.width - 30, backThief.position.y+10);
+    v.position = CGPointMake(backThief.position.x + backThief.size.width , backThief.position.y);
+    v.xScale +=0.8;
+    v.yScale +=0.8;
+    v.direction = 1;
+    v.velocity = speed;
     
     frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -15, location.y);
 
@@ -222,7 +227,7 @@
     for (SKPhysicsJoint * joint in v.pines) {
         [scene.physicsWorld removeJoint:joint];
     }
-    [scene.physicsWorld removeAllJoints];
+    //[scene.physicsWorld removeAllJoints];
     v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
     //[v.back removeAllActions];
     //v.back = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];

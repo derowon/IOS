@@ -93,7 +93,7 @@
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 400)];
     [self.thiefMachine spawnThiefInScene:self AtLocation:CGPointMake(300, 600)];
      */
-    [self.thiefMachine spawnRandomThiefInScene:self];
+    [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:60];
 
     
     /*

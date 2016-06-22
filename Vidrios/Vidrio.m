@@ -36,7 +36,9 @@
     [self.pines addObject:secondJoint];
 }
 
--(void) deltePins{
-    
+-(void)update:(CFTimeInterval)currentTime {
+    self.front.physicsBody.velocity = CGVectorMake(self.velocity * self.direction, 0);
+    self.back.physicsBody.velocity = CGVectorMake(self.velocity * self.direction, 0);
 }
+
 @end
