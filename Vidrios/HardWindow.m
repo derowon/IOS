@@ -16,17 +16,15 @@
     
     
     
-    if (self = [super initWithTexture:[SKTexture textureWithImageNamed:v]]) {
-        self.pines = [NSMutableArray array];
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
-        self.physicsBody.dynamic = YES;
-        self.alpha=1;
-        self.physicsBody.categoryBitMask = objectCategory;
-        self.physicsBody.collisionBitMask = worldCategory;
+    if (self = [super init:v]) {
+        
         self.name = @"Vidrio2";
+        self.xScale *=1.8;
+        self.yScale *=1.8;
     }
     
     return self;
 }
+
 @end
 

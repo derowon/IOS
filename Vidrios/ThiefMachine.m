@@ -48,12 +48,20 @@
         self.thiefWithBackTextures = runningFrames;
         
         //Thieves spawn locations
+        /*
         spawnLocations[0] = CGPointMake(-200, 150);
         spawnLocations[1] = CGPointMake(-200, 350);
         spawnLocations[2] = CGPointMake(-200, 550);
         spawnLocations[3] = CGPointMake(1200, 550);
         spawnLocations[4] = CGPointMake(1200, 350);
         spawnLocations[5] = CGPointMake(1200, 150);
+         */
+        spawnLocations[0] = CGPointMake(200, 150);
+        spawnLocations[1] = CGPointMake(200, 350);
+        spawnLocations[2] = CGPointMake(200, 550);
+        spawnLocations[3] = CGPointMake(600, 550);
+        spawnLocations[4] = CGPointMake(600, 350);
+        spawnLocations[5] = CGPointMake(600, 150);
      
         //Ground creation
         self.escapingThieves = [NSMutableArray array];
@@ -73,20 +81,31 @@
     
     int type = arc4random_uniform(percentage);
     
-    Vidrio *v = [[Vidrio alloc] init:type];
+    //Vidrio *v = [[Vidrio alloc] init:type];
     
    // frontThief.xScale = fabs(frontThief.xScale) * -1;
     backThief.position = CGPointMake(location.x , location.y);
+    Element *v ;
+    if(type>=2){
+        v = [[Window alloc] init];
+    }else if (type ==1){
+        v = [[Bomb alloc] init];
+    }else if (type ==0){
+        v = [[HardWindow alloc] init];
+    }
     
     v.position = CGPointMake(backThief.position.x + backThief.size.width , backThief.position.y);
-    if(type !=0){
-        v.xScale +=0.8;
-        v.yScale +=0.8;
-    }else{
-        v.position = CGPointMake(backThief.position.x + backThief.size.width -15, backThief.position.y);
+    if(type ==0){
+       // v.position = CGPointMake(backThief.position.x + backThief.size.width-10, backThief.position.y);
+    }else if(type ==1){
+        v.position = CGPointMake(backThief.position.x + backThief.size.width-25, backThief.position.y);
     }
     v.direction = 1;
     v.velocity = speed;
+    
+
+    
+    
      
     /*
     Element *v ;
@@ -113,6 +132,7 @@
         v.velocity = v.velocity *-1 ;
         v.direction=-1;
     }
+   // NSLog(@"%f ",v.velocity);
     
     frontThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(frontThief.size.width, frontThief.size.height)];
     backThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(backThief.size.width, backThief.size.height)];

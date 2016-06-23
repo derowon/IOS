@@ -11,4 +11,5 @@
 @interface Bomb : Element
 
 -(instancetype)init;
+
 @end

@@ -106,13 +106,13 @@
 				C0ADBC841D1B06A800B80E72 /* Vidrio.h */,
 				C0ADBC851D1B06A800B80E72 /* Vidrio.m */,
 				C0B5DE1D1D1C4F5C00139814 /* Window.h */,
+				C0B5DE1E1D1C4F5C00139814 /* Window.m */,
 				C0B5DE231D1C518E00139814 /* HardWindow.h */,
 				C0B5DE241D1C518E00139814 /* HardWindow.m */,
-				C0B5DE1E1D1C4F5C00139814 /* Window.m */,
 				C0B5DE1A1D1C4F1500139814 /* Element.h */,
+				C0B5DE1B1D1C4F1500139814 /* Element.m */,
 				C0B5DE201D1C501B00139814 /* Bomb.h */,
 				C0B5DE211D1C501B00139814 /* Bomb.m */,
-				C0B5DE1B1D1C4F1500139814 /* Element.m */,
 			);
 			path = Vidrios;
 			sourceTree = "<group>";

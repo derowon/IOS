@@ -81,6 +81,7 @@
     if([node.name isEqualToString:@"restartLabel"]){
         self.gameOver = false;
         [[self childNodeWithName:@"restartLabel"] removeFromParent];
+        [[self childNodeWithName:@"gameOverLabel"] removeFromParent];
         [self setTimer];
         [self setBackGround];
         [self createGround];
@@ -203,8 +204,8 @@
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
     
-    for(Vidrio* v in self.children) {
-        if ([v isKindOfClass:[Vidrio class]]) {
+    for(Element* v in self.children) {
+        if ([v isKindOfClass:[Element class]]) {
             [v update:currentTime];
         }
     }

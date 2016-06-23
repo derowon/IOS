@@ -12,6 +12,7 @@
 @implementation Window
 
 -(instancetype)init{
+    /*
     NSString *v = [NSString stringWithFormat:@"vidrio"];
 
         if (self = [super initWithTexture:[SKTexture textureWithImageNamed:v]]) {
@@ -29,6 +30,16 @@
         
     }
     
+    return self;
+     */
+    NSString *v = [NSString stringWithFormat:@"vidrio"];
+    if(self = [super init:v]){
+        self.alpha =0.85;
+        self.name = @"Vidrio";
+        self.xScale +=0.8;
+        self.yScale +=0.8;
+        
+    }
     return self;
 }
 

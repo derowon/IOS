@@ -13,22 +13,15 @@
 
 -(instancetype)init{
     NSString *v = [NSString stringWithFormat:@"bomb"];
-
-    
-
-    if (self = [super initWithTexture:[SKTexture textureWithImageNamed:v]]) {
-        self.pines = [NSMutableArray array];
-        //self.position = CGPointMake(backThief.position.x+backThief.size.width-30, 250);
-        //self.position = CGPointMake(300,300);
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
-        self.physicsBody.dynamic = YES;
-        self.alpha=1;
-        self.xScale *=2;
-        self.physicsBody.categoryBitMask = objectCategory;
-        self.physicsBody.collisionBitMask = worldCategory;
-        }
-    
+    if(self = [super init:v]){
+        self.alpha =1;
+        self.name = @"bomb";
+        self.xScale *=0.8;
+        self.yScale*=0.8;
+    }
     return self;
 }
+
+
 
 @end

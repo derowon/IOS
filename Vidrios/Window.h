@@ -11,4 +11,5 @@
 @interface Window : Element
 
 -(instancetype)init;
+
 @end

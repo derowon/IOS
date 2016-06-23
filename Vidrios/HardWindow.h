@@ -11,4 +11,7 @@
 @interface HardWindow : Element
 
 -(instancetype)init;
+
+
+
 @end
