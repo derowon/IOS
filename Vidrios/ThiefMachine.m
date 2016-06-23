@@ -48,21 +48,21 @@
         self.thiefWithBackTextures = runningFrames;
         
         //Thieves spawn locations
-        /*
+        
         spawnLocations[0] = CGPointMake(-200, 150);
         spawnLocations[1] = CGPointMake(-200, 350);
         spawnLocations[2] = CGPointMake(-200, 550);
         spawnLocations[3] = CGPointMake(1200, 550);
         spawnLocations[4] = CGPointMake(1200, 350);
         spawnLocations[5] = CGPointMake(1200, 150);
-         */
+         /*
         spawnLocations[0] = CGPointMake(200, 150);
         spawnLocations[1] = CGPointMake(200, 350);
         spawnLocations[2] = CGPointMake(200, 550);
         spawnLocations[3] = CGPointMake(600, 550);
         spawnLocations[4] = CGPointMake(600, 350);
         spawnLocations[5] = CGPointMake(600, 150);
-     
+     */
         //Ground creation
         self.escapingThieves = [NSMutableArray array];
         
