@@ -285,7 +285,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
-    if([node.name isEqualToString:@"Vidrio"]){
+    if([node.name isEqualToString:@"Vidrio"] || [node.name isEqualToString:@"Vidrio2"]){
         NSLog(@"Aprete!!! el vidrio");
         [self.thiefMachine vidrioTouched:node scene:self];
         

@@ -10,8 +10,14 @@
 
 @implementation Vidrio
 
--(instancetype)init{
-    if (self = [super initWithTexture:[SKTexture textureWithImageNamed:@"vidrio"]]) {
+-(instancetype)init:(int)type{
+    NSString *v = [NSString stringWithFormat:@"vidrio"];
+    if(type ==2){
+        v =[v stringByAppendingString:@"2-1"];
+    }
+    
+    NSLog(@"ESte es ek nombre %@ y el type %d",v,type);
+    if (self = [super initWithTexture:[SKTexture textureWithImageNamed:v]]) {
         self.pines = [NSMutableArray array];
         //self.position = CGPointMake(backThief.position.x+backThief.size.width-30, 250);
         //self.position = CGPointMake(300,300);
@@ -20,7 +26,11 @@
         self.alpha=0.85;
         self.physicsBody.categoryBitMask = objectCategory;
         self.physicsBody.collisionBitMask = worldCategory;
-        self.name=@"Vidrio";
+        if(type ==2 ){
+            self.name = @"Vidrio2";
+        }else{
+            self.name=@"Vidrio";
+        }
     }
  
     return self;

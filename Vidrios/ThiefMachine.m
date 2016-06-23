@@ -69,9 +69,9 @@
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
     SKSpriteNode*  backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
     
-
+    int type = arc4random_uniform(3);
         
-    Vidrio *v = [[Vidrio alloc] init];
+    Vidrio *v = [[Vidrio alloc] init:type];
     
    // frontThief.xScale = fabs(frontThief.xScale) * -1;
     backThief.position = CGPointMake(location.x , location.y);
@@ -268,33 +268,34 @@
 }
 -(void) vidrioTouched:(SKNode *)node scene:(SKScene*)scene{
     Vidrio *v = (Vidrio*)node;
-    for (SKPhysicsJoint * joint in v.pines) {
-        [scene.physicsWorld removeJoint:joint];
-    }
-    //[scene.physicsWorld removeAllJoints];
-    v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
-    v.zPosition = -10;
-    SKAction *action = [SKAction fadeOutWithDuration:1.0];
-    [v runAction:action];
-    
-    //[v.back removeAllActions];
-    //v.back = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
-    [v.back runAction:[SKAction repeatActionForever:
+    if([node.name isEqualToString:@"Vidrio"]){
+        for (SKPhysicsJoint * joint in v.pines) {
+            [scene.physicsWorld removeJoint:joint];
+            
+        }
+        v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
+        v.zPosition = -10;
+        SKAction *action = [SKAction fadeOutWithDuration:1.0];
+        [v runAction:action];
+        
+        [v.back runAction:[SKAction repeatActionForever:
                        [SKAction animateWithTextures:self.thiefRunningTextures
                                         timePerFrame:0.1f
                                               resize:NO
                                              restore:YES]] withKey:@"runningInPlace"];
-    v.front.zPosition =-10;
-    //[v.front removeAllActions];
-    //v.front = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
-
-    [v.front runAction:[SKAction repeatActionForever:
+        v.front.zPosition =-10;
+        [v.front runAction:[SKAction repeatActionForever:
                        [SKAction animateWithTextures:self.thiefRunningTextures
                                         timePerFrame:0.1f
                                               resize:NO
                                              restore:YES]] withKey:@"runningInPlace"];
     v.back.zPosition=-10;
-
+    }
+    else{
+        v.texture = [SKTexture textureWithImageNamed:@"vidrio2-2"];
+        v.alpha =1;
+        v.name = @"Vidrio";
+    }
 }
 
 @end

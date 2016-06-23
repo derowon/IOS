@@ -17,7 +17,7 @@
 @property CGFloat velocity;
 
 
--(instancetype)init;
+-(instancetype)init:(int)type;
 -(void) addFront:(SKSpriteNode*) front andBack:(SKSpriteNode*)back;
 -(void) addFirstJoints:(SKPhysicsJoint*)firstJoint andSecond:(SKPhysicsJoint*)secondJoint;
 -(void)update:(CFTimeInterval)currentTime;
