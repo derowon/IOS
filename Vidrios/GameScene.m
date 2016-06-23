@@ -17,7 +17,8 @@
 }
 
 -(void)didMoveToView:(SKView *)view {
-
+    
+    self.escapedThieves = 0;
     spawnInterval = 5;
     self.gameOver =false;
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
@@ -179,6 +180,10 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    if (self.escapedThieves > 5) {
+        self.gameOver = YES;
+    }
     
     if(self.gameOver){
         [self gameEnded];

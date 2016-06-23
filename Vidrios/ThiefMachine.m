@@ -7,6 +7,7 @@
 //
 
 #import "ThiefMachine.h"
+#import "GameScene.h"
 
 @implementation ThiefMachine {
     CGPoint spawnLocations[6];
@@ -81,9 +82,6 @@
     
     int type = arc4random_uniform(percentage);
     
-    //Vidrio *v = [[Vidrio alloc] init:type];
-    
-   // frontThief.xScale = fabs(frontThief.xScale) * -1;
     backThief.position = CGPointMake(location.x , location.y);
     Element *v ;
     if(type>=2){
@@ -95,28 +93,13 @@
     }
     
     v.position = CGPointMake(backThief.position.x + backThief.size.width , backThief.position.y);
-    if(type ==0){
-       // v.position = CGPointMake(backThief.position.x + backThief.size.width-10, backThief.position.y);
-    }else if(type ==1){
+    
+    if(type ==1){
         v.position = CGPointMake(backThief.position.x + backThief.size.width-25, backThief.position.y);
     }
+    
     v.direction = 1;
     v.velocity = speed;
-    
-
-    
-    
-     
-    /*
-    Element *v ;
-    if(type>=2){
-        v = [[Window alloc] init];
-    }else if (type ==1){
-        v = [[Bomb alloc] init];
-    }else if (type ==0){
-        v = [[HardWindow alloc] init];
-    }*/
-    
     
     frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -15, location.y);
     
@@ -170,28 +153,36 @@
 }
 
 
--(void)update:(CFTimeInterval)currentTime withScene:(SKScene*) scene{
+-(void)update:(CFTimeInterval)currentTime withScene:(GameScene*) scene {
     
     //elimina todos los vidrios que estan transparentes
     NSMutableArray *temp = [self.vidrios mutableCopy];
     for (Element *vidrio in temp) {
-        if(vidrio.alpha == 0){
-            //[vidrio removeFromParent];
-            //[self.vidrios removeObject:vidrio];
-            if(vidrio.direction == -1){
-                if(vidrio.back.position.x + vidrio.size.width < 0){
-                    [vidrio.front removeFromParent];
-                    [vidrio.back removeFromParent];
-                    [vidrio removeFromParent];
-                    [self.vidrios removeObject:vidrio];
-                }else{
-                    if(vidrio.back.position.x- vidrio.size.width >scene.frame.size.width){
-                        [vidrio.front removeFromParent];
-                        [vidrio.back removeFromParent];
-                        [vidrio removeFromParent];
-                        [self.vidrios removeObject:vidrio];
-                    }
+        //[vidrio removeFromParent];
+        //[self.vidrios removeObject:vidrio];
+        if(vidrio.direction == -1){
+            if(vidrio.back.position.x + vidrio.size.width < 0){
+                NSLog(@"Mato wachines");
+                if (vidrio.pines.count == 0) {
+                    scene.escapedThieves++;
+                    NSLog(@"Aumento wachos que se las tomaron");
                 }
+                [vidrio.front removeFromParent];
+                [vidrio.back removeFromParent];
+                [vidrio removeFromParent];
+                [self.vidrios removeObject:vidrio];
+            }
+        } else {
+            if(vidrio.back.position.x- vidrio.size.width >scene.frame.size.width){
+                NSLog(@"Mato wachines");
+                if (vidrio.pines.count == 0) {
+                    NSLog(@"Aumento wachos que se las tomaron");
+                    scene.escapedThieves++;
+                }
+                [vidrio.front removeFromParent];
+                [vidrio.back removeFromParent];
+                [vidrio removeFromParent];
+                [self.vidrios removeObject:vidrio];
             }
         }
     }
