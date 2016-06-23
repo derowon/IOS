@@ -211,6 +211,7 @@
             [scene.physicsWorld removeJoint:joint];
             
         }
+        [v.pines removeAllObjects];
         v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
         v.zPosition = -10;
         v.name = @"vidrioRoto";
