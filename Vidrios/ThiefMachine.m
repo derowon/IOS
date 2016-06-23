@@ -15,6 +15,7 @@
 -(instancetype)init {
     if (self = [super init]) {
         //running thief
+        self.vidrios = [NSMutableArray array];
         NSMutableArray *runningFrames = [NSMutableArray array];
         SKTextureAtlas *runningAnimatedAtlas = [SKTextureAtlas atlasNamed:@"Sprite"];
         int numImages = 4;
@@ -45,12 +46,12 @@
         self.thiefWithBackTextures = runningFrames;
         
         //Thieves spawn locations
-        spawnLocations[0] = CGPointMake(-150, 150);
-        spawnLocations[1] = CGPointMake(-150, 350);
-        spawnLocations[2] = CGPointMake(-150, 550);
-        spawnLocations[3] = CGPointMake(400, 550);
-        spawnLocations[4] = CGPointMake(400, 350);
-        spawnLocations[5] = CGPointMake(400, 150);
+        spawnLocations[0] = CGPointMake(-200, 150);
+        spawnLocations[1] = CGPointMake(-200, 350);
+        spawnLocations[2] = CGPointMake(-200, 550);
+        spawnLocations[3] = CGPointMake(1200, 550);
+        spawnLocations[4] = CGPointMake(1200, 350);
+        spawnLocations[5] = CGPointMake(1200, 150);
      
         //Ground creation
         
@@ -65,10 +66,13 @@
 }
 
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed {
-   
     SKSpriteNode* frontThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithFrontTextures[0]];
-    SKSpriteNode* backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
+    SKSpriteNode*  backThief = [SKSpriteNode spriteNodeWithTexture:self.thiefWithBackTextures[0]];
+    
+
+        
     Vidrio *v = [[Vidrio alloc] init];
+    
    // frontThief.xScale = fabs(frontThief.xScale) * -1;
     backThief.position = CGPointMake(location.x , location.y);
     
@@ -78,8 +82,22 @@
     v.direction = 1;
     v.velocity = speed;
     
+    
     frontThief.position = CGPointMake(backThief.position.x + v.size.width+backThief.size.width/2 -15, location.y);
-
+    
+    if(CGPointEqualToPoint(location , self->spawnLocations[3]) || CGPointEqualToPoint(location, self->spawnLocations[4]) || CGPointEqualToPoint(location, self->spawnLocations[5])){
+        CGPoint temp = backThief.position;
+        backThief.position = frontThief.position;
+        frontThief.position = temp;
+        
+        frontThief.xScale = fabs(frontThief.xScale) * -1;
+        backThief.xScale = fabs(backThief.xScale) *-1;
+        frontThief.position= CGPointMake(frontThief.position.x +10, frontThief.position.y);
+        backThief.position = CGPointMake(backThief.position.x+10, backThief.position.y);
+        v.velocity = v.velocity *-1 ;
+        v.direction=-1;
+    }
+    
     frontThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(frontThief.size.width, frontThief.size.height)];
     backThief.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(backThief.size.width, backThief.size.height)];
     frontThief.physicsBody.dynamic = YES;
@@ -107,6 +125,7 @@
     SKPhysicsJointFixed *pin2 = [SKPhysicsJointFixed jointWithBodyA:v.physicsBody bodyB:frontThief.physicsBody anchor:anchor];
     [scene.physicsWorld addJoint:pin2];
     [v addFirstJoints:pin2 andSecond:pin];
+    [self.vidrios addObject:v];
 }
 
 -(void) setBackGround:(SKScene *)scene{
@@ -220,6 +239,31 @@
         CGPoint amtToMove = CGPointMake(bgVelocity.x * _deltaTime, bgVelocity.y * _deltaTime);
         cloud.position = CGPointMake(cloud.position.x+amtToMove.x, cloud.position.y+amtToMove.y);
     }
+    
+    
+    //elimina todos los vidrios que estan transparentes
+    NSMutableArray *temp = [self.vidrios mutableCopy];
+    for (Vidrio *vidrio in temp) {
+        if(vidrio.alpha == 0){
+            //[vidrio removeFromParent];
+            //[self.vidrios removeObject:vidrio];
+            if(vidrio.direction == -1){
+                if(vidrio.back.position.x + vidrio.size.width < 0){
+                    [vidrio.front removeFromParent];
+                    [vidrio.back removeFromParent];
+                    [vidrio removeFromParent];
+                    [self.vidrios removeObject:vidrio];
+                }else{
+                    if(vidrio.back.position.x- vidrio.size.width >scene.frame.size.width){
+                        [vidrio.front removeFromParent];
+                        [vidrio.back removeFromParent];
+                        [vidrio removeFromParent];
+                        [self.vidrios removeObject:vidrio];
+                    }
+                }
+            }
+        }
+    }
 
 }
 -(void) vidrioTouched:(SKNode *)node scene:(SKScene*)scene{
@@ -229,6 +273,10 @@
     }
     //[scene.physicsWorld removeAllJoints];
     v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
+    v.zPosition = -10;
+    SKAction *action = [SKAction fadeOutWithDuration:1.0];
+    [v runAction:action];
+    
     //[v.back removeAllActions];
     //v.back = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
     [v.back runAction:[SKAction repeatActionForever:
@@ -236,6 +284,7 @@
                                         timePerFrame:0.1f
                                               resize:NO
                                              restore:YES]] withKey:@"runningInPlace"];
+    v.front.zPosition =-10;
     //[v.front removeAllActions];
     //v.front = [SKSpriteNode spriteNodeWithTexture:self.thiefRunningTextures[0]];
 
@@ -244,6 +293,7 @@
                                         timePerFrame:0.1f
                                               resize:NO
                                              restore:YES]] withKey:@"runningInPlace"];
+    v.back.zPosition=-10;
 
 }
 

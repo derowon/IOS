@@ -20,6 +20,7 @@ static const uint32_t worldCategory = 2;
 @property (strong, nonatomic) NSArray* thiefWithFrontTextures;
 @property (strong, nonatomic) NSArray* thiefWithBackTextures;
 @property (strong,nonatomic ) NSMutableArray *clouds;
+@property (strong,nonatomic) NSMutableArray *vidrios;
 @property  NSTimeInterval lastUpdateTime;
 @property  NSTimeInterval deltaTime;
 @property float bgVel;
