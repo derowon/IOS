@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */ = {isa = PBXBuildFile; fileRef = C0ADBC851D1B06A800B80E72 /* Vidrio.m */; };
+		C0B5DE1C1D1C4F1500139814 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE1B1D1C4F1500139814 /* Element.m */; };
+		C0B5DE1F1D1C4F5C00139814 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE1E1D1C4F5C00139814 /* Window.m */; };
+		C0B5DE221D1C501B00139814 /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE211D1C501B00139814 /* Bomb.m */; };
+		C0B5DE251D1C518E00139814 /* HardWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE241D1C518E00139814 /* HardWindow.m */; };
 		C0D8C1801CF79E900026862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C17F1CF79E900026862F /* main.m */; };
 		C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1821CF79E900026862F /* AppDelegate.m */; };
 		C0D8C1861CF79E900026862F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1851CF79E900026862F /* GameScene.m */; };
@@ -24,6 +28,14 @@
 /* Begin PBXFileReference section */
 		C0ADBC841D1B06A800B80E72 /* Vidrio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vidrio.h; sourceTree = "<group>"; };
 		C0ADBC851D1B06A800B80E72 /* Vidrio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vidrio.m; sourceTree = "<group>"; };
+		C0B5DE1A1D1C4F1500139814 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
+		C0B5DE1B1D1C4F1500139814 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Element.m; sourceTree = "<group>"; };
+		C0B5DE1D1D1C4F5C00139814 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		C0B5DE1E1D1C4F5C00139814 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
+		C0B5DE201D1C501B00139814 /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = "<group>"; };
+		C0B5DE211D1C501B00139814 /* Bomb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bomb.m; sourceTree = "<group>"; };
+		C0B5DE231D1C518E00139814 /* HardWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardWindow.h; sourceTree = "<group>"; };
+		C0B5DE241D1C518E00139814 /* HardWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardWindow.m; sourceTree = "<group>"; };
 		C0D8C17B1CF79E900026862F /* Vidrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vidrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D8C17F1CF79E900026862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0D8C1811CF79E900026862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +105,14 @@
 				FF19D3FB1D19D0BB002F5D05 /* ThiefMachine.m */,
 				C0ADBC841D1B06A800B80E72 /* Vidrio.h */,
 				C0ADBC851D1B06A800B80E72 /* Vidrio.m */,
+				C0B5DE1D1D1C4F5C00139814 /* Window.h */,
+				C0B5DE231D1C518E00139814 /* HardWindow.h */,
+				C0B5DE241D1C518E00139814 /* HardWindow.m */,
+				C0B5DE1E1D1C4F5C00139814 /* Window.m */,
+				C0B5DE1A1D1C4F1500139814 /* Element.h */,
+				C0B5DE201D1C501B00139814 /* Bomb.h */,
+				C0B5DE211D1C501B00139814 /* Bomb.m */,
+				C0B5DE1B1D1C4F1500139814 /* Element.m */,
 			);
 			path = Vidrios;
 			sourceTree = "<group>";
@@ -179,11 +199,15 @@
 			files = (
 				C0D8C18B1CF79E900026862F /* GameViewController.m in Sources */,
 				C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */,
+				C0B5DE1C1D1C4F1500139814 /* Element.m in Sources */,
 				FF19D3FC1D19D0BB002F5D05 /* ThiefMachine.m in Sources */,
 				C0D8C1861CF79E900026862F /* GameScene.m in Sources */,
+				C0B5DE251D1C518E00139814 /* HardWindow.m in Sources */,
+				C0B5DE221D1C501B00139814 /* Bomb.m in Sources */,
 				C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */,
 				FF19D3F91D19C1A6002F5D05 /* ThiefSpriteNode.m in Sources */,
 				C0D8C1801CF79E900026862F /* main.m in Sources */,
+				C0B5DE1F1D1C4F5C00139814 /* Window.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

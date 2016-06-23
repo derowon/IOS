@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "Vidrio.h"
+#import "Window.h"
+#import "Bomb.h"
+#import "HardWindow.h"
 
 static const uint32_t thiefCategory = 1;
 static const uint32_t objectCategory = 4;
@@ -19,17 +22,15 @@ static const uint32_t worldCategory = 2;
 @property (strong, nonatomic) NSArray* thiefRunningTextures;
 @property (strong, nonatomic) NSArray* thiefWithFrontTextures;
 @property (strong, nonatomic) NSArray* thiefWithBackTextures;
-@property (strong,nonatomic ) NSMutableArray *clouds;
+@property (strong,nonatomic) NSMutableArray *escapingThieves;
+
 @property (strong,nonatomic) NSMutableArray *vidrios;
-@property  NSTimeInterval lastUpdateTime;
-@property  NSTimeInterval deltaTime;
-@property float bgVel;
+
+
 
 -(instancetype)init;
 -(void)spawnRandomThiefInScene:(SKScene*)scene WithSpeed:(CGFloat)speed;
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed;
--(void)createGround:(SKScene*)scene;
--(void)setBackGround:(SKScene*)scene;
 -(void)update:(CFTimeInterval)currentTime withScene:(SKScene*)scene;
 -(void)vidrioTouched:(SKNode*)node scene:(SKScene*) scene;
 @end

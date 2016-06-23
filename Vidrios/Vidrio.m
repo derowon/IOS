@@ -12,11 +12,12 @@
 
 -(instancetype)init:(int)type{
     NSString *v = [NSString stringWithFormat:@"vidrio"];
-    if(type ==2){
+    if(type ==1){
         v =[v stringByAppendingString:@"2-1"];
+    }else if(type ==0){
+        v = [NSString stringWithFormat:@"bomb"];
     }
-    
-    NSLog(@"ESte es ek nombre %@ y el type %d",v,type);
+
     if (self = [super initWithTexture:[SKTexture textureWithImageNamed:v]]) {
         self.pines = [NSMutableArray array];
         //self.position = CGPointMake(backThief.position.x+backThief.size.width-30, 250);
@@ -24,12 +25,17 @@
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.size.width, self.size.height)];
         self.physicsBody.dynamic = YES;
         self.alpha=0.85;
+        
         self.physicsBody.categoryBitMask = objectCategory;
         self.physicsBody.collisionBitMask = worldCategory;
-        if(type ==2 ){
+        if(type ==1 ){
             self.name = @"Vidrio2";
+            self.alpha=1;
+        }else if(type ==0) {
+            self.name=@"bomb";
+            self.alpha =1;
         }else{
-            self.name=@"Vidrio";
+            self.name = @"Vidrio";
         }
     }
  
