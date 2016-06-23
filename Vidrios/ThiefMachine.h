@@ -33,5 +33,5 @@ static const uint32_t worldCategory = 2;
 -(void)spawnRandomThiefInScene:(SKScene*)scene WithSpeed:(CGFloat)speed;
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed;
 -(void)update:(CFTimeInterval)currentTime withScene:(GameScene*)scene;
--(void)vidrioTouched:(SKNode*)node scene:(SKScene*) scene;
+-(void)vidrioTouched:(SKNode*)node scene:(GameScene*) scene;
 @end

@@ -162,10 +162,8 @@
         //[self.vidrios removeObject:vidrio];
         if(vidrio.direction == -1){
             if(vidrio.back.position.x + vidrio.size.width < 0){
-                NSLog(@"Mato wachines");
-                if (vidrio.pines.count == 0) {
-                    scene.escapedThieves++;
-                    NSLog(@"Aumento wachos que se las tomaron");
+                if (vidrio.pines.count > 0 && ![vidrio isKindOfClass:[Bomb class]]) {
+                    scene.lives--;
                 }
                 [vidrio.front removeFromParent];
                 [vidrio.back removeFromParent];
@@ -174,10 +172,8 @@
             }
         } else {
             if(vidrio.back.position.x- vidrio.size.width >scene.frame.size.width){
-                NSLog(@"Mato wachines");
-                if (vidrio.pines.count == 0) {
-                    NSLog(@"Aumento wachos que se las tomaron");
-                    scene.escapedThieves++;
+                if (vidrio.pines.count > 0 && ![vidrio isKindOfClass:[Bomb class]]) {
+                    scene.lives--;
                 }
                 [vidrio.front removeFromParent];
                 [vidrio.back removeFromParent];
@@ -194,8 +190,9 @@
 
 }
 
--(void) vidrioTouched:(SKNode *)node scene:(SKScene*)scene{
+-(void) vidrioTouched:(SKNode *)node scene:(GameScene*)scene{
     Element *v = (Element*)node;
+    scene.score += 10;
     if([node.name isEqualToString:@"Vidrio"]){
         NSLog(@"vidrio normal");
         for (SKPhysicsJoint * joint in v.pines) {
@@ -226,10 +223,10 @@
                                              restore:YES]] withKey:@"runningInPlace"];
     v.back.zPosition=-10;
     }
-    else if([node.name isEqualToString:@"Vidrio2"]){
+    else if([node.name isEqualToString:@"Vidrio2"]) {
         NSLog(@"vidrio 2!!");
         v.texture = [SKTexture textureWithImageNamed:@"vidrio2-2"];
-        v.alpha =1;
+        v.alpha = 1;
         v.name = @"Vidrio";
     }
 }

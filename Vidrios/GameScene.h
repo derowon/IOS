@@ -17,6 +17,8 @@
 @property NSTimeInterval lastUpdateTime;
 @property NSTimeInterval deltaTime;
 @property BOOL gameOver;
-@property NSUInteger escapedThieves;
+@property (strong,nonatomic)  AVAudioPlayer *backgroundAudioPlayer;
+@property NSInteger lives;
+@property NSUInteger score;
 
 @end
