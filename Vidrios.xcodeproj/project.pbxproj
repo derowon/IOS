@@ -12,6 +12,8 @@
 		C0B5DE1F1D1C4F5C00139814 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE1E1D1C4F5C00139814 /* Window.m */; };
 		C0B5DE221D1C501B00139814 /* Bomb.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE211D1C501B00139814 /* Bomb.m */; };
 		C0B5DE251D1C518E00139814 /* HardWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE241D1C518E00139814 /* HardWindow.m */; };
+		C0B5DE271D1C954C00139814 /* backgroundSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0B5DE261D1C954C00139814 /* backgroundSound.wav */; };
+		C0B5DE291D1C96A200139814 /* breakingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0B5DE281D1C96A200139814 /* breakingSound.wav */; };
 		C0D8C1801CF79E900026862F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C17F1CF79E900026862F /* main.m */; };
 		C0D8C1831CF79E900026862F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1821CF79E900026862F /* AppDelegate.m */; };
 		C0D8C1861CF79E900026862F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D8C1851CF79E900026862F /* GameScene.m */; };
@@ -35,6 +37,8 @@
 		C0B5DE211D1C501B00139814 /* Bomb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bomb.m; sourceTree = "<group>"; };
 		C0B5DE231D1C518E00139814 /* HardWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardWindow.h; sourceTree = "<group>"; };
 		C0B5DE241D1C518E00139814 /* HardWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardWindow.m; sourceTree = "<group>"; };
+		C0B5DE261D1C954C00139814 /* backgroundSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backgroundSound.wav; sourceTree = "<group>"; };
+		C0B5DE281D1C96A200139814 /* breakingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = breakingSound.wav; sourceTree = "<group>"; };
 		C0D8C17B1CF79E900026862F /* Vidrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vidrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D8C17F1CF79E900026862F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C0D8C1811CF79E900026862F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		C0D8C17D1CF79E900026862F /* Vidrios */ = {
 			isa = PBXGroup;
 			children = (
+				C0B5DE261D1C954C00139814 /* backgroundSound.wav */,
+				C0B5DE281D1C96A200139814 /* breakingSound.wav */,
 				C0D8C19A1CF7A1140026862F /* Sprite.atlas */,
 				C0D8C1811CF79E900026862F /* AppDelegate.h */,
 				C0D8C1821CF79E900026862F /* AppDelegate.m */,
@@ -179,6 +185,8 @@
 			files = (
 				C0D8C1881CF79E900026862F /* GameScene.sks in Resources */,
 				C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */,
+				C0B5DE271D1C954C00139814 /* backgroundSound.wav in Resources */,
+				C0B5DE291D1C96A200139814 /* breakingSound.wav in Resources */,
 				C0D8C19B1CF7A1140026862F /* Sprite.atlas in Resources */,
 				C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */,
 				C0D8C18E1CF79E900026862F /* Main.storyboard in Resources */,
