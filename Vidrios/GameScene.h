@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "ThiefMachine.h"
-
+@import AVFoundation;
 @interface GameScene : SKScene
 
 @property (strong, nonatomic) ThiefMachine* thiefMachine;
@@ -17,5 +17,6 @@
 @property  NSTimeInterval lastUpdateTime;
 @property  NSTimeInterval deltaTime;
 @property BOOL gameOver;
+@property (strong,nonatomic)  AVAudioPlayer *backgroundAudioPlayer;
 
 @end

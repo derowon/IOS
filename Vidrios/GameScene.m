@@ -86,6 +86,7 @@
         [self setBackGround];
         [self createGround];
         [self startGame];
+        [self startBackgroundMusic];
         
     }
     if([node.name isEqualToString:@"bomb"]){
@@ -244,6 +245,23 @@
     gameOverLabel.fontColor = [SKColor redColor];
     [self addChild:gameOverLabel];
     [self buttonShow];
+}
+
+- (void)startBackgroundMusic
+{
+    NSError *err;
+    NSURL *file = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"backgroundSound.wav" ofType:nil]];
+    self.backgroundAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:file error:&err];
+    if (err) {
+        NSLog(@"error in audio play %@",[err userInfo]);
+        return;
+    }
+    [self.backgroundAudioPlayer prepareToPlay];
+    
+    // this will play the music infinitely
+    self.backgroundAudioPlayer.numberOfLoops = -1;
+    [self.backgroundAudioPlayer setVolume:1.0];
+    [self.backgroundAudioPlayer play];
 }
 
 @end

@@ -212,11 +212,13 @@
             
         }
         [v.pines removeAllObjects];
+        SKAction *breakingSound = [SKAction playSoundFileNamed:@"breakingSound.wav" waitForCompletion:NO];
         v.texture = [SKTexture textureWithImageNamed:@"vidrioRoto"];
         v.zPosition = -10;
         v.name = @"vidrioRoto";
         SKAction *action = [SKAction fadeOutWithDuration:1.0];
-        [v runAction:action];
+        SKAction *withSound =[SKAction sequence:@[breakingSound,action]];
+        [v runAction:withSound];
         [self.escapingThieves addObject:v.back];
         [self.escapingThieves addObject:v.front];
         
