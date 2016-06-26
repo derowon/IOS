@@ -13,6 +13,8 @@
 #import "Bomb.h"
 #import "HardWindow.h"
 
+@class GameScene;
+
 static const uint32_t thiefCategory = 1;
 static const uint32_t objectCategory = 4;
 static const uint32_t worldCategory = 2;
@@ -27,10 +29,9 @@ static const uint32_t worldCategory = 2;
 @property (strong,nonatomic) NSMutableArray *vidrios;
 
 
-
 -(instancetype)init;
 -(void)spawnRandomThiefInScene:(SKScene*)scene WithSpeed:(CGFloat)speed;
 -(void)spawnThiefInScene:(SKScene*)scene AtLocation:(CGPoint)location WithSpeed:(CGFloat)speed;
--(void)update:(CFTimeInterval)currentTime withScene:(SKScene*)scene;
--(void)vidrioTouched:(SKNode*)node scene:(SKScene*) scene;
+-(void)update:(CFTimeInterval)currentTime withScene:(GameScene*)scene;
+-(void)vidrioTouched:(SKNode*)node scene:(GameScene*) scene;
 @end

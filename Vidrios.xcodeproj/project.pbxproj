@@ -23,7 +23,6 @@
 		C0D8C1901CF79E900026862F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C18F1CF79E900026862F /* Assets.xcassets */; };
 		C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */; };
 		C0D8C19B1CF7A1140026862F /* Sprite.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C0D8C19A1CF7A1140026862F /* Sprite.atlas */; };
-		FF19D3F91D19C1A6002F5D05 /* ThiefSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = FF19D3F81D19C1A6002F5D05 /* ThiefSpriteNode.m */; };
 		FF19D3FC1D19D0BB002F5D05 /* ThiefMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = FF19D3FB1D19D0BB002F5D05 /* ThiefMachine.m */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +53,6 @@
 		C0D8C1921CF79E900026862F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0D8C1941CF79E900026862F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0D8C19A1CF7A1140026862F /* Sprite.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprite.atlas; sourceTree = "<group>"; };
-		FF19D3F71D19C1A6002F5D05 /* ThiefSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThiefSpriteNode.h; sourceTree = "<group>"; };
-		FF19D3F81D19C1A6002F5D05 /* ThiefSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThiefSpriteNode.m; sourceTree = "<group>"; };
 		FF19D3FA1D19D0BB002F5D05 /* ThiefMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThiefMachine.h; sourceTree = "<group>"; };
 		FF19D3FB1D19D0BB002F5D05 /* ThiefMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThiefMachine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,8 +102,6 @@
 				C0D8C1911CF79E900026862F /* LaunchScreen.storyboard */,
 				C0D8C1941CF79E900026862F /* Info.plist */,
 				C0D8C17E1CF79E900026862F /* Supporting Files */,
-				FF19D3F71D19C1A6002F5D05 /* ThiefSpriteNode.h */,
-				FF19D3F81D19C1A6002F5D05 /* ThiefSpriteNode.m */,
 				FF19D3FA1D19D0BB002F5D05 /* ThiefMachine.h */,
 				FF19D3FB1D19D0BB002F5D05 /* ThiefMachine.m */,
 				C0ADBC841D1B06A800B80E72 /* Vidrio.h */,
@@ -214,7 +209,6 @@
 				C0B5DE251D1C518E00139814 /* HardWindow.m in Sources */,
 				C0B5DE221D1C501B00139814 /* Bomb.m in Sources */,
 				C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */,
-				FF19D3F91D19C1A6002F5D05 /* ThiefSpriteNode.m in Sources */,
 				C0D8C1801CF79E900026862F /* main.m in Sources */,
 				C0B5DE1F1D1C4F5C00139814 /* Window.m in Sources */,
 			);

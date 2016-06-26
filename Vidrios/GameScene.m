@@ -11,13 +11,16 @@
 @implementation GameScene
 {
     SKLabelNode* tiempo;
+    SKLabelNode* lives;
+    SKLabelNode* score;
     NSTimer* timer;
     NSUInteger timeSec;
     CGFloat spawnInterval;
 }
 
 -(void)didMoveToView:(SKView *)view {
-
+    
+    self.lives = 5;
     spawnInterval = 5;
     self.gameOver =false;
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
@@ -30,13 +33,14 @@
     
     
 }
+
 -(void) setTimer{
     tiempo = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
     tiempo.text = @"00:00";
     tiempo.fontSize = 20;
     tiempo.position = CGPointMake(CGRectGetMaxX(self.frame) - 50, CGRectGetMaxY(self.frame) - 150);
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
-    tiempo.zPosition = 1;
+    tiempo.zPosition = -10;
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     [self addChild:tiempo];
     timeSec = 0;
@@ -74,7 +78,6 @@
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
     if([node.name isEqualToString:@"Vidrio"] || [node.name isEqualToString:@"Vidrio2"]){
-        NSLog(@"Aprete!!! el vidrio");
         [self.thiefMachine vidrioTouched:node scene:self];
         
     }
@@ -82,11 +85,24 @@
         self.gameOver = false;
         [[self childNodeWithName:@"restartLabel"] removeFromParent];
         [[self childNodeWithName:@"gameOverLabel"] removeFromParent];
+        [[self childNodeWithName:@"highestScoreLabel"] removeFromParent];
         [self setTimer];
         [self setBackGround];
         [self createGround];
         [self startGame];
-        [self startBackgroundMusic];
+        //[self startBackgroundMusic];
+        lives = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        lives.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.lives];
+        lives.fontSize = 20;
+        lives.position = CGPointMake(CGRectGetMaxX(self.frame) - 50, CGRectGetMaxY(self.frame) - 210);
+        lives.zPosition = -10;
+        score = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        score.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.score];
+        score.fontSize = 20;
+        score.position = CGPointMake(CGRectGetMaxX(self.frame) - 50, CGRectGetMaxY(self.frame) - 180);
+        score.zPosition = -10;
+        [self addChild:score];
+        [self addChild:lives];
         
     }
     if([node.name isEqualToString:@"bomb"]){
@@ -94,7 +110,7 @@
         
     }
     
-    
+    //[NSUserDefaults standardUserDefaults]
 }
 
 -(void) setBackGround{
@@ -181,6 +197,13 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     
+    lives.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.lives];
+    score.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.score];
+    
+    if (self.lives <= 0) {
+        self.gameOver = YES;
+    }
+    
     if(self.gameOver){
         [self gameEnded];
         return;
@@ -222,16 +245,16 @@
     restartLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.5);
     restartLabel.fontColor = [SKColor yellowColor];
     [self addChild:restartLabel];
-    
-   // SKAction *labelScaleAction = [SKAction scaleTo:3.0 duration:0.5];
-    
-    //[restartLabel runAction:labelScaleAction];
 }
 -(void) startGame{
     self.thiefMachine = [[ThiefMachine alloc] init];
     [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:100];
 }
 -(void) gameEnded{
+    
+    if (self.score > [[NSUserDefaults standardUserDefaults] integerForKey:@"HighScore"]) {
+        [[NSUserDefaults standardUserDefaults] setInteger:self.score forKey:@"HighScore"];
+    }
     
     [self removeAllActions];
 
@@ -244,6 +267,11 @@
     gameOverLabel.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.65);
     gameOverLabel.fontColor = [SKColor redColor];
     [self addChild:gameOverLabel];
+    SKLabelNode* highestScore = [[SKLabelNode alloc] initWithFontNamed:@"Arial"];
+    highestScore.name = @"highestScoreLabel";
+    highestScore.text = [NSString stringWithFormat:@"Highest Score: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"HighScore"]];
+    highestScore.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.35);
+    [self addChild:highestScore];
     [self buttonShow];
 }
 
