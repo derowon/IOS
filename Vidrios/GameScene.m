@@ -90,7 +90,7 @@
         [self setBackGround];
         [self createGround];
         [self startGame];
-        //[self startBackgroundMusic];
+        [self startBackgroundMusic];
         lives = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         lives.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.lives];
         lives.fontSize = 20;
@@ -110,7 +110,6 @@
         
     }
     
-    //[NSUserDefaults standardUserDefaults]
 }
 
 -(void) setBackGround{
