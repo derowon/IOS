@@ -27,6 +27,7 @@
     [self setBackgroundColor:skyColor];
     
     [self buttonShow];
+    [self initBackgroundMusic];
     //self.thiefMachine = [[ThiefMachine alloc] init];
     //[self.thiefMachine spawnRandomThiefInScene:self WithSpeed:100];
    
@@ -50,8 +51,15 @@
 - (void)timerTick:(NSTimer*) timer {
     timeSec++;
     [tiempo setText:[NSString stringWithFormat:@"%02lu:%02lu", timeSec / 60, timeSec % 60]];
-    
+    NSLog(@"Este es el timeSec, %lu", (unsigned long)timeSec);
     [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60)];
+    if(timeSec > 10){
+        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(200)];
+    }
+    if(timeSec > 30){
+        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(320)];
+    }
+    
 }
 
 - (void)StopTimer {
@@ -90,7 +98,7 @@
         [self setBackGround];
         [self createGround];
         [self startGame];
-        //[self startBackgroundMusic];
+        [self playBackGroundMusic];
         lives = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         lives.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.lives];
         lives.fontSize = 20;
@@ -259,6 +267,7 @@
     [self removeAllActions];
 
     [self removeAllChildren];
+    [timer invalidate];
     SKLabelNode *gameOverLabel;
     gameOverLabel= [[SKLabelNode alloc ]initWithFontNamed:@"Arial"];
     gameOverLabel.name = @"gameOverLabel";
@@ -271,11 +280,12 @@
     highestScore.name = @"highestScoreLabel";
     highestScore.text = [NSString stringWithFormat:@"Highest Score: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"HighScore"]];
     highestScore.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.35);
+    [self.backgroundAudioPlayer stop];
     [self addChild:highestScore];
     [self buttonShow];
 }
 
-- (void)startBackgroundMusic
+- (void)initBackgroundMusic
 {
     NSError *err;
     NSURL *file = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"backgroundSound.wav" ofType:nil]];
@@ -284,12 +294,19 @@
         NSLog(@"error in audio play %@",[err userInfo]);
         return;
     }
-    [self.backgroundAudioPlayer prepareToPlay];
+   
     
     // this will play the music infinitely
     self.backgroundAudioPlayer.numberOfLoops = -1;
-    [self.backgroundAudioPlayer setVolume:1.0];
+   
+    
+}
+-(void)playBackGroundMusic{
+     [self.backgroundAudioPlayer setVolume:1.0];
+    [self.backgroundAudioPlayer prepareToPlay];
     [self.backgroundAudioPlayer play];
 }
-
+-(void)stopBackgroundMusic{
+    [self.backgroundAudioPlayer stop];
+}
 @end
