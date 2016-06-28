@@ -14,8 +14,11 @@
     SKLabelNode* lives;
     SKLabelNode* score;
     NSTimer* timer;
-    NSUInteger timeSec;
+    CGFloat timeSec;
     CGFloat spawnInterval;
+    CGFloat timeSinceLastSpawn;
+    CGFloat spawnIntervalUpdate;
+    CGFloat timeSinceLastSpawnIntervalUpdate;
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -40,7 +43,7 @@
     tiempo.text = @"00:00";
     tiempo.fontSize = 20;
     tiempo.position = CGPointMake(CGRectGetMaxX(self.frame) - 50, CGRectGetMaxY(self.frame) - 150);
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
     tiempo.zPosition = -10;
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     [self addChild:tiempo];
@@ -49,38 +52,42 @@
 }
 
 - (void)timerTick:(NSTimer*) timer {
-    timeSec++;
-    [tiempo setText:[NSString stringWithFormat:@"%02lu:%02lu", timeSec / 60, timeSec % 60]];
-    NSLog(@"Este es el timeSec, %lu", (unsigned long)timeSec);
-    [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60)];
-    if(timeSec > 10){
+    timeSec += 0.1;
+    
+    [tiempo setText:[NSString stringWithFormat:@"%02lu:%02lu", (NSUInteger)timeSec / 60, (NSUInteger)timeSec % 60]];
+    NSLog(@"Este es el timeSec, %lu", (NSUInteger)timeSec);
+    
+    if (timeSec - timeSinceLastSpawn >= spawnInterval) {
+        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60)];
+        timeSinceLastSpawn = timeSec;
+    }
+    
+    if (timeSec - timeSinceLastSpawnIntervalUpdate >= spawnIntervalUpdate) {
+        spawnIntervalUpdate = spawnIntervalUpdate <= 0.4 ? 0.4 : spawnIntervalUpdate-0.1;
+        timeSinceLastSpawnIntervalUpdate = timeSec;
+    }
+    
+    /*if(timeSec > 10){
         [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(200)];
     }
     if(timeSec > 30){
         [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(320)];
-    }
+    }*/
     
 }
 
 - (void)StopTimer {
     [timer invalidate];
     timeSec = 0;
-    tiempo.text = [NSString stringWithFormat:@"%02lu:%02lu", timeSec, timeSec];
+    tiempo.text = [NSString stringWithFormat:@"%02lu:%02lu", (NSUInteger)timeSec, (NSUInteger)timeSec];
 }
 
--(int)getRandomNumberBetween:(int)from to:(int)to {
+- (int)getRandomNumberBetween:(int)from to:(int)to {
     
     return (int)from + arc4random() % (to-from+1);
 }
 
-
-// Add these new methods
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    }
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
@@ -124,7 +131,6 @@
         
     }
     
-    //[NSUserDefaults standardUserDefaults]
 }
 
 -(void) setBackGround{
@@ -261,6 +267,12 @@
     [self addChild:restartLabel];
 }
 -(void) startGame{
+    self.lives = 5;
+    spawnInterval = 1.0;
+    timeSinceLastSpawn = 0;
+    spawnIntervalUpdate = 10.0;
+    timeSinceLastSpawnIntervalUpdate = spawnIntervalUpdate;
+    self.gameOver =false;
     self.thiefMachine = [[ThiefMachine alloc] init];
     [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:100];
 }
@@ -313,11 +325,13 @@
    
     
 }
+
 -(void)playBackGroundMusic{
-     [self.backgroundAudioPlayer setVolume:1.0];
+    [self.backgroundAudioPlayer setVolume:1.0];
     [self.backgroundAudioPlayer prepareToPlay];
     [self.backgroundAudioPlayer play];
 }
+
 -(void)stopBackgroundMusic{
     [self.backgroundAudioPlayer stop];
 }
