@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C03F38AB1D23054C00507B33 /* crackingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = C03F38AA1D23054C00507B33 /* crackingSound.wav */; };
 		C0ADBC861D1B06A800B80E72 /* Vidrio.m in Sources */ = {isa = PBXBuildFile; fileRef = C0ADBC851D1B06A800B80E72 /* Vidrio.m */; };
 		C0B5DE1C1D1C4F1500139814 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE1B1D1C4F1500139814 /* Element.m */; };
 		C0B5DE1F1D1C4F5C00139814 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DE1E1D1C4F5C00139814 /* Window.m */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C03F38AA1D23054C00507B33 /* crackingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crackingSound.wav; sourceTree = "<group>"; };
 		C0ADBC841D1B06A800B80E72 /* Vidrio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vidrio.h; sourceTree = "<group>"; };
 		C0ADBC851D1B06A800B80E72 /* Vidrio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vidrio.m; sourceTree = "<group>"; };
 		C0B5DE1A1D1C4F1500139814 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				C0B5DE261D1C954C00139814 /* backgroundSound.wav */,
 				C0B5DE281D1C96A200139814 /* breakingSound.wav */,
+				C03F38AA1D23054C00507B33 /* crackingSound.wav */,
 				C0D8C19A1CF7A1140026862F /* Sprite.atlas */,
 				C0D8C1811CF79E900026862F /* AppDelegate.h */,
 				C0D8C1821CF79E900026862F /* AppDelegate.m */,
@@ -184,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03F38AB1D23054C00507B33 /* crackingSound.wav in Resources */,
 				C0D8C1881CF79E900026862F /* GameScene.sks in Resources */,
 				C0D8C1931CF79E900026862F /* LaunchScreen.storyboard in Resources */,
 				C0B5DE271D1C954C00139814 /* backgroundSound.wav in Resources */,

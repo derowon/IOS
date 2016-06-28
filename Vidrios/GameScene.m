@@ -22,7 +22,7 @@
     
     self.lives = 5;
     spawnInterval = 5;
-    self.gameOver =false;
+    self.gameOver =NO;
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:skyColor];
     
@@ -90,14 +90,18 @@
         
     }
     if([node.name isEqualToString:@"restartLabel"]){
-        self.gameOver = false;
+        NSLog(@"RESTART!!");
+        self.gameOver = NO;
+        self.lives = 5;
         [[self childNodeWithName:@"restartLabel"] removeFromParent];
         [[self childNodeWithName:@"gameOverLabel"] removeFromParent];
         [[self childNodeWithName:@"highestScoreLabel"] removeFromParent];
+        [[self childNodeWithName:@"playerScore"] removeFromParent];
+        //[self removeAllChildren];
         [self setTimer];
         [self setBackGround];
         [self createGround];
-        [self startGame];
+        
         [self playBackGroundMusic];
         lives = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         lives.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.lives];
@@ -111,10 +115,12 @@
         score.zPosition = -10;
         [self addChild:score];
         [self addChild:lives];
+        [self startGame];
+        NSLog(@"RESTART FINAL!!");
         
     }
     if([node.name isEqualToString:@"bomb"]){
-        self.gameOver= true;
+        self.gameOver= YES;
         
     }
     
@@ -268,6 +274,7 @@
 
     [self removeAllChildren];
     [timer invalidate];
+    self.thiefMachine = nil;
     SKLabelNode *gameOverLabel;
     gameOverLabel= [[SKLabelNode alloc ]initWithFontNamed:@"Arial"];
     gameOverLabel.name = @"gameOverLabel";
@@ -279,7 +286,12 @@
     SKLabelNode* highestScore = [[SKLabelNode alloc] initWithFontNamed:@"Arial"];
     highestScore.name = @"highestScoreLabel";
     highestScore.text = [NSString stringWithFormat:@"Highest Score: %ld", (long)[[NSUserDefaults standardUserDefaults] integerForKey:@"HighScore"]];
-    highestScore.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.35);
+    highestScore.position = CGPointMake(self.frame.size.width/2, self.frame.size.height * 0.20);
+    SKLabelNode* playerScore = [[SKLabelNode alloc] initWithFontNamed:@"Arial"];
+    playerScore.name = @"playerScore";
+    playerScore.text = [NSString stringWithFormat:@"Your Score was: %ld",self.score];
+    playerScore.position = CGPointMake(self.frame.size.width/2, self.frame.size.height *.35);
+    [self addChild:playerScore];
     [self.backgroundAudioPlayer stop];
     [self addChild:highestScore];
     [self buttonShow];

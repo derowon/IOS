@@ -225,6 +225,9 @@
     }
     else if([node.name isEqualToString:@"Vidrio2"]) {
         NSLog(@"vidrio 2!!");
+        SKAction *crackingSound = [SKAction playSoundFileNamed:@"crackingSound.wav" waitForCompletion:NO];
+        SKAction *sound = [SKAction sequence:@[crackingSound]];
+        [v runAction:sound];
         v.texture = [SKTexture textureWithImageNamed:@"vidrio2-2"];
         v.alpha = 1;
         v.name = @"Vidrio";
