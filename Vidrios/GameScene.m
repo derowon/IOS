@@ -23,12 +23,7 @@
 
 -(void)didMoveToView:(SKView *)view {
     
-    self.lives = 5;
-    spawnInterval = 1.0;
-    timeSinceLastSpawn = 0;
-    spawnIntervalUpdate = 10.0;
-    timeSinceLastSpawnIntervalUpdate = spawnIntervalUpdate;
-    self.gameOver =false;
+    
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:skyColor];
     
@@ -264,6 +259,12 @@
     [self addChild:restartLabel];
 }
 -(void) startGame{
+    self.lives = 5;
+    spawnInterval = 1.0;
+    timeSinceLastSpawn = 0;
+    spawnIntervalUpdate = 10.0;
+    timeSinceLastSpawnIntervalUpdate = spawnIntervalUpdate;
+    self.gameOver =false;
     self.thiefMachine = [[ThiefMachine alloc] init];
     [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:100];
 }
