@@ -194,7 +194,6 @@
     Element *v = (Element*)node;
     scene.score += 10;
     if([node.name isEqualToString:@"Vidrio"]){
-        NSLog(@"vidrio normal");
         for (SKPhysicsJoint * joint in v.pines) {
             [scene.physicsWorld removeJoint:joint];
             
@@ -224,7 +223,6 @@
     v.back.zPosition=-10;
     }
     else if([node.name isEqualToString:@"Vidrio2"]) {
-        NSLog(@"vidrio 2!!");
         SKAction *crackingSound = [SKAction playSoundFileNamed:@"crackingSound.wav" waitForCompletion:NO];
         SKAction *sound = [SKAction sequence:@[crackingSound]];
         [v runAction:sound];

@@ -23,12 +23,10 @@
 
 -(void)didMoveToView:(SKView *)view {
     
-    self.lives = 5;
-    spawnInterval = 5;
-    self.gameOver =NO;
+    self.lives =5;
+    self.gameOver = NO;
     SKColor *skyColor = [SKColor colorWithRed:113.0/255.0 green:197.0/255.0 blue:207.0/255.0 alpha:1.0];
     [self setBackgroundColor:skyColor];
-    
     [self buttonShow];
     [self initBackgroundMusic];
     //self.thiefMachine = [[ThiefMachine alloc] init];
@@ -55,24 +53,16 @@
     timeSec += 0.1;
     
     [tiempo setText:[NSString stringWithFormat:@"%02lu:%02lu", (NSUInteger)timeSec / 60, (NSUInteger)timeSec % 60]];
-    NSLog(@"Este es el timeSec, %lu", (NSUInteger)timeSec);
     
     if (timeSec - timeSinceLastSpawn >= spawnInterval) {
-        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60)];
+        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(arc4random_uniform((uint32_t)timeSec + 60) + 60 + timeSec)];
         timeSinceLastSpawn = timeSec;
     }
     
     if (timeSec - timeSinceLastSpawnIntervalUpdate >= spawnIntervalUpdate) {
-        spawnIntervalUpdate = spawnIntervalUpdate <= 0.4 ? 0.4 : spawnIntervalUpdate-0.1;
+        spawnInterval = spawnInterval < 0.3 ? 0.2 : spawnInterval - 0.1;
         timeSinceLastSpawnIntervalUpdate = timeSec;
     }
-    
-    /*if(timeSec > 10){
-        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(200)];
-    }
-    if(timeSec > 30){
-        [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:(320)];
-    }*/
     
 }
 
@@ -272,7 +262,7 @@
     timeSinceLastSpawn = 0;
     spawnIntervalUpdate = 10.0;
     timeSinceLastSpawnIntervalUpdate = spawnIntervalUpdate;
-    self.gameOver =false;
+    self.gameOver = NO;
     self.thiefMachine = [[ThiefMachine alloc] init];
     [self.thiefMachine spawnRandomThiefInScene:self WithSpeed:100];
 }
